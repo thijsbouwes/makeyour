@@ -4,12 +4,12 @@
     </div>
     <div class="relative mx-auto max-w-7xl">
         <div class="text-center">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Inspiratie en geschenkideeën</h2>
-            <p class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">Onze blog biedt een breed scala aan gepersonaliseerde geschenkideeën die je kunt aanpassen aan de interesses en persoonlijkheid van de ontvanger.</p>
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ $title }}</h2>
+            <p class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">{{ $description }}</p>
         </div>
         <div class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
-            @foreach($blogs as $blog)
-                <x-blog-card :blog="$blog"/>
+            @foreach($posts as $post)
+                <x-blog-card :post="$post"/>
             @endforeach
         </div>
     </div>

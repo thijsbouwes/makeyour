@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('/{locale?}')
-    ->middleware('setLocale')
     ->group(function () {
         Route::get('/', HomeController::class)->name('home');
         Route::get('/blogs/{slug}', BlogController::class)->name('blogs');

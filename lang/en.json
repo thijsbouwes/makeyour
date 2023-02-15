@@ -1,0 +1,9 @@
+{
+    "nav.home": "Home",
+    "nav.blog": "Blog",
+    "nav.valentine": "Valentijn",
+    "nav.personalize": "Personalize",
+    "message.notFound": "Page not found",
+    "message.notFoundDescription": "Sorry, we couldn’t find the page you’re looking for.",
+    "action.backHome": "Go back home"
+}

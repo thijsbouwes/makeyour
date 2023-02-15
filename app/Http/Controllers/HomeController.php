@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\StrapiService;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class HomeController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke(Request $request, StrapiService $service)
     {
-        // todo fetch blogs
-        return view('pages.home')->with('blogs', [
-            [
-                'title' => 'Foobar',
-                'description' => 'Hello world'
-            ]
-        ]);
+        $homePage = $service
+            ->getEntries('homepage', ['hero.image'])
+            ->json('data');
+        $posts = $service
+            ->getEntries('posts', ['slug', 'image', 'author', 'tags'])
+            ->json('data');
+
+        return view('pages.home')
+            ->with('posts', $posts)
+            ->with('homePage', $homePage);
     }
 }

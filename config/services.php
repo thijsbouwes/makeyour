@@ -31,4 +31,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'strapi' => [
+        'endpoint' => env('STRAPI_ENDPOINT'),
+        'token' => env('STRAPI_TOKEN'),
+    ]
 ];

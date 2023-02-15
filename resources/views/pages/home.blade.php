@@ -1,7 +1,7 @@
 <x-layout>
-    <x-slot:title>Home page</x-slot:title>
+    <x-slot:title>@lang('nav.home')</x-slot:title>
 
-    <x-hero/>
+    <x-hero :hero="$homePage['attributes']['hero']"/>
 
-    <x-blog-section :blogs="$blogs"/>
+    <x-blog-section :title="$homePage['attributes']['blogIntroTitle']" :description="$homePage['attributes']['blogIntroDescription']" :posts="$posts"/>
 </x-layout>
