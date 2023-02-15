@@ -84,6 +84,13 @@ return [
 
     'locale' => 'en',
 
+    'default_locale' => 'nl',
+
+    'locales' => [
+        'nl',
+        'en'
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
