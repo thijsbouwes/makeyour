@@ -1,5 +1,5 @@
 # Makeyour demo
-Multi language blog demo assignment, build with the latest tools:
+Multilingual blog demo assignment, build with the latest tools:
 - Laravel V10
 - Tailwind CSS
 - PHP 8.2
