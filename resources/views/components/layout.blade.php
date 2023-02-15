@@ -4,9 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
+
     <title>{{ config('app.name') }} {{ $title ? " | $title" : '' }}</title>
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
     @vite('resources/css/app.css')
+
+    <!-- SEO/Marketing -->
+    <meta name="description" content="{{ config('app.name') }} demo multilingual blog assignment"/>
+    <meta name="subject" content="{{ config('app.name') }}"/>
+    <meta name="author" content="Thijs Bouwes"/>
 </head>
 <body>
 
@@ -25,7 +31,7 @@
                     <a href="#" class="text-base font-medium text-white hover:text-indigo-50">Reviews</a>
 
                     @foreach(config('app.locales') as $locale)
-                        <a href="{{ route(Route::currentRouteName(), ['locale' => $locale]) }}" class="py-2"><img class="h-4" src="{{ asset("/images/{$locale}.svg") }}" alt="{{ $locale }}"></a>
+                        <a href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(),['locale' => $locale])) }}" class="py-2"><img class="h-4" src="{{ asset("/images/{$locale}.svg") }}" alt="{{ $locale }}"></a>
                     @endforeach
                 </div>
             </div>

@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -22,9 +24,8 @@ class SetLocale
             return redirect()->to(implode('/', $segments));
         }
 
-        if ($locale !== config('app.default_locale')) {
-            URL::defaults(['locale' => $locale]);
-        }
+        App::setLocale($locale);
+        URL::defaults(['locale' => $locale]);
 
         return $next($request);
     }
