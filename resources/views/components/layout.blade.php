@@ -37,9 +37,13 @@
                 <a target="_blank" href="https://design.makeyour.com/" class="inline-block rounded-md border border-transparent bg-white py-2 px-4 text-base font-medium text-blue-850 hover:bg-indigo-50">@lang('nav.personalize')</a>
             </div>
         </div>
-        <div class="flex flex-wrap justify-center gap-x-6 py-4 lg:hidden">
+        <div class="flex items-center flex-wrap justify-center gap-x-6 py-4 lg:hidden">
             <a href="{{ route('home') }}" class="text-base font-medium text-white hover:text-indigo-50">@lang('nav.home')</a>
             <a href="{{ route('home') }}" class="text-base font-medium text-white hover:text-indigo-50">@lang('nav.blog')</a>
+
+            @foreach(config('app.locales') as $locale)
+                <a href="{{ route('home', ['locale' => $locale]) }}" class="py-1"><img class="h-4" src="{{ asset("/images/{$locale}.svg") }}" alt="{{ $locale }}"></a>
+            @endforeach
         </div>
     </nav>
 </header>
