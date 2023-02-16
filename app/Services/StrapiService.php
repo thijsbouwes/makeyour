@@ -18,16 +18,23 @@ class StrapiService
             'locale' => App::currentLocale()
         ], $parameters);
 
-        // todo cache logic
+        $cacheKey = "strapi-$type-" . md5(json_encode($parameters));
+        if ($cache = cache()->get($cacheKey)) {
+            return $cache;
+        }
 
-        return $this
+        $data = $this
             ->prepareRequest()
             ->get($type, $parameters)
             ->throw(function (Response $response) {
                 Log::error('Strapi error', ['message' => $response->json(), 'status' => $response->status()]);
-
                 throw new ModelNotFoundException();
-            });
+            })
+            ->json('data');
+
+        cache()->put($cacheKey, $data, now()->addHour());
+
+        return $data;
     }
 
     public function getEntriesWhere(string $type, string $fieldName, string $fieldValue, array $populate = [])

@@ -10,12 +10,8 @@ class BlogController extends Controller
 {
     public function __invoke(Request $request, StrapiService $service)
     {
-        $blogPage = $service
-            ->getEntries('blogpage', ['cta.image'])
-            ->json('data');
-        $posts = $service
-            ->getEntriesWhere('posts', 'slug', $request->route('slug'), ['slug', 'image', 'author', 'tags'])
-            ->json('data');
+        $blogPage = $service->getEntries('blogpage', ['cta.image']);
+        $posts = $service->getEntriesWhere('posts', 'slug', $request->route('slug'), ['slug', 'image', 'author.image', 'tags']);
 
         if (!$posts) {
             throw new ModelNotFoundException();

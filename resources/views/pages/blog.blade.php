@@ -34,7 +34,7 @@
                                 @endif
                            </div>
                         </figure>
-                        <x-blog-author :author="$post['attributes']['author']['data']"/>
+                        <x-blog-author :author="$post['attributes']['author']['data']" :createdAt="$post['attributes']['createdAt']"/>
                     </div>
                 </div>
                 <div class="mt-8 lg:mt-0">
