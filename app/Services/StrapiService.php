@@ -33,7 +33,7 @@ class StrapiService
             })
             ->json('data');
 
-        cache()->tags(CacheTags::STRAPI->value)->put($cacheKey, $data, now()->addHour());
+        cache()->tags(CacheTags::STRAPI->value)->put($cacheKey, $data, now()->addDay());
 
         return $data;
     }
