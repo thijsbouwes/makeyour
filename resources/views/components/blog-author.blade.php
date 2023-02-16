@@ -3,7 +3,7 @@
         @if ($author)
             <span class="sr-only">{{ $author['attributes']['name'] }}</span>
         @endif
-        @if ($author['attributes']['image']['data'])
+        @if ($author && $author['attributes']['image']['data'])
             <img class="h-10 w-10 rounded-full object-cover" src="{{ config('services.strapi.endpoint') . $author['attributes']['image']['data']['attributes']['formats']['small']['url'] }}">
         @endif
     </div>

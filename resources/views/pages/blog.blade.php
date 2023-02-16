@@ -29,7 +29,7 @@
                     <div class="relative mx-auto max-w-prose text-base lg:max-w-none">
                         <figure>
                             <div class="aspect-w-12 aspect-h-7 lg:aspect-none">
-                                @if($post['attributes']['image'])
+                                @if($post['attributes']['image']['data'])
                                     <img loading="lazy" class="rounded-lg object-cover object-center shadow-lg" src="{{ config('services.strapi.endpoint') . $post['attributes']['image']['data']['attributes']['formats']['large']['url'] }}" alt="">
                                 @endif
                            </div>
@@ -38,9 +38,6 @@
                     </div>
                 </div>
                 <div class="mt-8 lg:mt-0">
-                    <div class="mx-auto max-w-prose text-base lg:max-w-none">
-                        <p class="text-lg text-gray-500">{{ $post['attributes']['shortDescription'] }}</p>
-                    </div>
                     <div class="prose prose-indigo mx-auto mt-5 text-gray-500 lg:col-start-1 lg:row-start-1 lg:max-w-none">
                         {!! Markdown::parse($post['attributes']['description']) !!}
                     </div>

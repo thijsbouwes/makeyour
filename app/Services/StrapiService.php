@@ -19,9 +19,9 @@ class StrapiService
         ], $parameters);
 
         $cacheKey = "strapi-$type-" . md5(json_encode($parameters));
-        if ($cache = cache()->get($cacheKey)) {
-            return $cache;
-        }
+//        if ($cache = cache()->get($cacheKey)) {
+//            return $cache;
+//        }
 
         $data = $this
             ->prepareRequest()

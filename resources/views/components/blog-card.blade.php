@@ -1,6 +1,6 @@
 <article class="flex flex-col overflow-hidden rounded-lg shadow-lg">
     <div class="flex-shrink-0">
-        @if($post['attributes']['image'])
+        @if($post['attributes']['image']['data'])
             <img loading="lazy" class="h-48 w-full object-cover" src="{{ config('services.strapi.endpoint') . $post['attributes']['image']['data']['attributes']['formats']['small']['url'] }}">
         @endif
     </div>
