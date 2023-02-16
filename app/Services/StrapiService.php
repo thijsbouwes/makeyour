@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\CacheTags;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\Response;
@@ -18,10 +19,10 @@ class StrapiService
             'locale' => App::currentLocale()
         ], $parameters);
 
-        $cacheKey = "strapi-$type-" . md5(json_encode($parameters));
-//        if ($cache = cache()->get($cacheKey)) {
-//            return $cache;
-//        }
+        $cacheKey = "$type-" . md5(json_encode($parameters));
+        if ($cache = cache()->tags(CacheTags::STRAPI->value)->get($cacheKey)) {
+            return $cache;
+        }
 
         $data = $this
             ->prepareRequest()
@@ -32,7 +33,7 @@ class StrapiService
             })
             ->json('data');
 
-        cache()->put($cacheKey, $data, now()->addHour());
+        cache()->tags(CacheTags::STRAPI->value)->put($cacheKey, $data, now()->addHour());
 
         return $data;
     }
